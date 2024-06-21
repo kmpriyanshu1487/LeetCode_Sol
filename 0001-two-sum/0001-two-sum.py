@@ -8,10 +8,10 @@ class Solution:
                 return [num_map[complement], i]
             num_map[num] = i
         
-        # According to the problem statement, there is exactly one solution
+       
         return []
 
-# Example usage:
+
 solution = Solution()
 
 nums1 = [2, 7, 11, 15]
