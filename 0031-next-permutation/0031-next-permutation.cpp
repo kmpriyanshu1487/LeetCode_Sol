@@ -1,20 +1,28 @@
-#include <vector>
-#include <algorithm>
+class Solution{
+    public:
+void nextPermutation(vector<int>& nums) {
+    int n = nums.size();
+    int idx = -1;
+    for (int i = n - 2; i >= 0; --i) {
+        if (nums[i] < nums[i + 1]) {
+            idx = i;
+            break;
+        }
+    }
 
-class Solution {
-public:
-    void nextPermutation(std::vector<int>& nums) {
-        int i = nums.size() - 2;
-        while (i >= 0 && nums[i] >= nums[i + 1]) {
-            i--;
+    if (idx == -1) {
+       
+        reverse(nums.begin(), nums.end());
+    } else {
+        
+        for (int i = n - 1; i > idx; --i) {
+            if (nums[i] > nums[idx]) {
+                swap(nums[i], nums[idx]);
+                break;
+            }
         }
-        if (i >= 0) {
-            int j = nums.size() - 1;      
-            while (nums[j] <= nums[i]) {
-                j--;
-            }       
-            std::swap(nums[i], nums[j]);
-        }
-        std::reverse(nums.begin() + i + 1, nums.end());
+        
+        reverse(nums.begin() + idx + 1, nums.end());
+    }
     }
 };
