@@ -1,20 +1,20 @@
 class Solution {
 public:
     ListNode* modifiedList(vector<int>& nums, ListNode* head) {
-        ListNode* d=new ListNode(-1);
-        ListNode *t=d;
-        set<int>s;
+        ListNode* n=new ListNode(-1);
+        ListNode *temp=n;
+        set<int>set;
         for(auto i:nums){
-            s.insert(i);
+            set.insert(i);
         }
         while(head!=NULL){
-            if(s.find(head->val)==s.end()){
-                t->next=head;
-                t=t->next;
+            if(set.find(head->val)==set.end()){
+                temp->next=head;
+                temp=temp->next;
             }
             head=head->next;
         }
-        t->next=NULL;
-        return d->next;
+        temp->next=NULL;
+        return n->next;
     }
 };
